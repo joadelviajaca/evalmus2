@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Projects\Schemas;
 
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -16,12 +17,17 @@ class ProjectForm
                     ->required(),
                 Textarea::make('summary')
                     ->columnSpanFull(),
-                TextInput::make('rubric_id')
-                    ->numeric(),
                 TextInput::make('state')
                     ->required()
                     ->default('pending'),
                 TextInput::make('metadata'),
+                Select::make('rubric_id')
+                    ->label('Rúbrica asociada')
+                    ->relationship('rubric', 'title')
+                    ->searchable()
+                    ->preload()
+                    ->required()
+                    
             ]);
     }
 }

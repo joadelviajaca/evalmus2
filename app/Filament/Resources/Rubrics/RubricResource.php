@@ -15,6 +15,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Filament\Resources\Rubrics\RelationManagers\CriteriaRelationManager;
+use App\Filament\Resources\Rubrics\RelationManagers\CriterionLevelsRelationManager;
 
 class RubricResource extends Resource
 {
@@ -42,7 +44,7 @@ class RubricResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CriteriaRelationManager::class,
         ];
     }
 
