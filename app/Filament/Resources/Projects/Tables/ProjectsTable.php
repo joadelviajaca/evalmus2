@@ -16,12 +16,27 @@ class ProjectsTable
         return $table
             ->columns([
                 TextColumn::make('title')
+                    ->label(__('Title'))
                     ->searchable(),
                 TextColumn::make('rubric_id')
+                    ->label(__('Rubric id'))
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('state')
-                    ->searchable(),
+                    ->label(__('State'))
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'pending' => 'warning',
+                        'evaluating' => 'info',
+                        'finished' => 'success',
+                        default => 'gray',
+                    })
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'pending' => 'Pendiente',
+                        'evaluating' => 'En evaluación',
+                        'finished' => 'Finalizado',
+                        default => ucfirst($state),
+                    }),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

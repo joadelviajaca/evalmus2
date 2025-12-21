@@ -23,6 +23,7 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Facades\Auth;
+use UnitEnum;
 
 class UserResource extends Resource
 {
@@ -31,6 +32,12 @@ class UserResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'name';
+    protected static string|UnitEnum|null $navigationGroup = 'Administración';
+    protected static ?string $navigationLabel = 'Usuarios';
+    protected static ?string $pluralLabel = 'Usuarios';
+
+    protected static ?string $modelLabel = 'usuario';
+    protected static ?string $plurarModelLabel = 'usuarios';
 
     public static function form(Schema $schema): Schema
     {

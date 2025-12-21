@@ -20,6 +20,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use LaraZeus\SpatieTranslatable\SpatieTranslatablePlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -31,13 +32,15 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => '#0E8B68',
+                'success' => Color::Green,
+                'warning' => Color::Amber,
+                'danger'  => Color::Red,
+                'info'    => Color::Blue,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
-            ->pages([
-                Dashboard::class,
-            ])
+            ->pages([])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 AccountWidget::class,
@@ -56,9 +59,16 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->plugins([
                 FilamentShieldPlugin::make(),
+
             ])
+            ->plugin(SpatieTranslatablePlugin::make())
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->brandName('Evalmus')
+            ->brandLogo(asset('images/logo.svg'))
+            ->brandLogoHeight('3.5rem')
+            ->favicon(asset('favicon.ico'))
+            ;
     }
 }

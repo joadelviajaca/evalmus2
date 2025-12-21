@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class ProjectResource extends Resource
 {
@@ -23,6 +24,16 @@ class ProjectResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'title';
+
+    protected static string|UnitEnum|null $navigationGroup = 'Gestión académica';
+
+    protected static ?string $navigationLabel = 'Proyectos';
+
+    protected static ?string $pluralLabel = 'Proyectos';
+
+    protected static ?string $modelLabel = 'proyecto';
+
+    protected static ?string $plurarModelLabel = 'proyectos';
 
     public static function form(Schema $schema): Schema
     {

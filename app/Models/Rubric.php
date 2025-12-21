@@ -16,4 +16,9 @@ class Rubric extends Model
     {
         return $this->hasMany(Criterion::class)->orderBy('order');
     }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
 }

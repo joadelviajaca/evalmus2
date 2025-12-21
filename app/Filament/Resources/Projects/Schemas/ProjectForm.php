@@ -14,12 +14,21 @@ class ProjectForm
         return $schema
             ->components([
                 TextInput::make('title')
+                    ->label(__('Title'))
                     ->required(),
                 Textarea::make('summary')
+                    ->label(__('Summary'))
                     ->columnSpanFull(),
-                TextInput::make('state')
+                Select::make('state')
+                    ->label(__('State'))
+                    ->options([
+                        'pending' => __('Pending'),
+                        'evaluating' => __('Evaluating'),
+                        'finished' => __('Finished'),
+                    ])
                     ->required()
-                    ->default('pending'),
+                    ->default('pending')
+                    ->disabled(fn (string $context) => $context === 'create'),
                 TextInput::make('metadata'),
                 Select::make('rubric_id')
                     ->label('Rúbrica asociada')

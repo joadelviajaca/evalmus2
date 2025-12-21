@@ -13,10 +13,14 @@ class RubricForm
         return $schema
             ->components([
                 TextInput::make('title')
+                    ->label(__('Title'))
                     ->required(),
                 Textarea::make('description')
+                    ->label(__('Description'))
                     ->columnSpanFull(),
-                TextInput::make('scale'),
+                TextInput::make('scale')
+                    ->label(__('Scale'))
+                    ->required(),
                 TextInput::make('meta'),
             ]);
     }
