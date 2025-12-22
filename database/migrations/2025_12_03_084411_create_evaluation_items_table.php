@@ -19,6 +19,7 @@ return new class extends Migration
             $table->decimal('score', 8, 2)->nullable(); // copia del value en el momento de guardar (redundante pero útil para auditoría)
             $table->text('comment')->nullable();
             $table->timestamps();
+            $table->unique(['evaluation_id', 'criterion_id']);
         });
     }
 
