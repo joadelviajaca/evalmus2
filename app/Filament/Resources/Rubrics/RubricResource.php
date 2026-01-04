@@ -23,15 +23,19 @@ class RubricResource extends Resource
 {
     protected static ?string $model = Rubric::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentList;
 
     protected static ?string $recordTitleAttribute = 'title';
-    protected static string|UnitEnum|null $navigationGroup = 'Gestión académica';
     protected static ?string $navigationLabel = 'Rúbricas';
     protected static ?string $pluralLabel = 'Rúbricas';
     protected static ?string $modelLabel = 'rúbrica';
 
     protected static ?string $plurarModelLabel = 'rúbricas';
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Academic Management');
+    }
 
     public static function form(Schema $schema): Schema
     {

@@ -29,8 +29,8 @@ class Evaluation extends Model
      */
     public function totalScore(): float
     {
-        if (!$this->relationLoaded('items')) {
-            $this->load(['items.criterion']);
+        if (!$this->relationLoaded('criterionEvaluations')) {
+            $this->load(['criterionEvaluations.criterion']);
         }
 
         $criteria = $this->project?->rubric?->criteria;

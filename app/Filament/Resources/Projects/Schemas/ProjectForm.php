@@ -29,6 +29,18 @@ class ProjectForm
                     ->required()
                     ->default('pending')
                     ->disabled(fn (string $context) => $context === 'create'),
+                Select::make('evaluators')
+                    ->label(__('Evaluators'))
+                    ->multiple()
+                    ->relationship(
+                        name: 'evaluators',
+                        titleAttribute: 'name',
+                        modifyQueryUsing: fn ($query) =>
+                            $query->role('evaluador')
+                    )
+                    ->preload()
+                    ->searchable()
+                    ->required(),
                 TextInput::make('metadata'),
                 Select::make('rubric_id')
                     ->label('Rúbrica asociada')
