@@ -226,6 +226,20 @@ export default function EvaluationPage({ mode }: EvaluationPageProps) {
                     <div>
                         <h1 className="text-xl font-bold text-gray-800">{project.title}</h1>
                         <p className="text-sm text-gray-500">Rúbrica: {project.rubric.title}</p>
+
+                        {project.attachment_url && (
+                            <a
+                                href={project.attachment_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1 text-sm text-primary hover:underline bg-primary/5 px-2 py-0.5 rounded border border-primary/20"
+                            >
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.5l5 5v20m0 0h2a2 2 0 012 2v3m-6-6h.01" />
+                                </svg>
+                                Ver Documento
+                            </a>
+                        )}
                     </div>
 
                     {/* Indicador de progreso */}

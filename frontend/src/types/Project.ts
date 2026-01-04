@@ -4,6 +4,7 @@ export interface Project {
     id: number;
     title: string;
     state: 'pending' | 'evaluating' | 'finished';
+    attachment_url?: string | null;
     rubric: Rubric;
     evaluation?: {
         id: number;
@@ -28,6 +29,7 @@ export interface Criterion {
 export interface ProjectDetail {
     id: number;
     title: string;
+    attachment_url?: string | null;
     rubric: {
         id: number;
         title: string;

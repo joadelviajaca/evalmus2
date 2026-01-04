@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
-    protected $fillable = ['title','summary','rubric_id','state','metadata'];
+    protected $fillable = ['title','summary','rubric_id','state','metadata', 'attachment'];
 
     protected $casts = ['metadata' => 'array'];
+
+    protected $appends = ['attachment_url'];
 
     public function rubric()
     {
@@ -24,6 +27,11 @@ class Project extends Model
     public function evaluations()
     {
         return $this->hasMany(Evaluation::class);
+    }
+
+    public function getAttachmentUrlAttribute()
+    {
+        return $this->attachment ? url(Storage::url($this->attachment)) : null;
     }
 
     protected function finalScore(): Attribute

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Projects\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -18,6 +19,14 @@ class ProjectForm
                     ->required(),
                 Textarea::make('summary')
                     ->label(__('Summary'))
+                    ->columnSpanFull(),
+                FileUpload::make('attachment')
+                    ->label('Documento del Proyecto (PDF)')
+                    ->directory('projects_files') // Carpeta dentro de storage/app/public
+                    ->acceptedFileTypes(['application/pdf'])
+                    ->maxSize(10240) // 10MB
+                    ->downloadable() // Permite descargar desde el panel
+                    ->openable()
                     ->columnSpanFull(),
                 Select::make('state')
                     ->label(__('State'))
