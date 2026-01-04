@@ -307,7 +307,7 @@ export default function EvaluationPage({ mode }: EvaluationPageProps) {
                         </button>
 
                         <button
-                            onClick={handleSave}
+                            onClick={() => handleSave(false)}
                             disabled={saving || submitting}
                             className="px-6 py-2 rounded-lg bg-white border-2 border-primary text-primary font-medium hover:bg-primary/5 transition disabled:opacity-50"
                         >

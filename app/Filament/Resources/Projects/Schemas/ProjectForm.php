@@ -25,6 +25,8 @@ class ProjectForm
                     ->directory('projects_files') // Carpeta dentro de storage/app/public
                     ->acceptedFileTypes(['application/pdf'])
                     ->maxSize(10240) // 10MB
+                    ->disk('public')
+                    ->visibility('public')
                     ->downloadable() // Permite descargar desde el panel
                     ->openable()
                     ->columnSpanFull(),
